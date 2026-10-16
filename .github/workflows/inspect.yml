@@ -1,0 +1,18 @@
+name: inspect
+on: push
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+      - name: Print Kernel and repo files
+        run: |
+          uname -a
+          pwd
+          ls -la
+          find . -type f -not -path './.git/*' | sort
+      - name: Count of files on repo
+        run: |
+          echo "Total Repo Files:"
+          find . -type f -not -path './.git/*' | wc -l
