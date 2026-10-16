@@ -5,6 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Read the readme
-        run: cat README.md
+        run: cat ../../README.md
       - name: Show the Python version
-        run: pyhton3 --version
+        run: python3 --version
