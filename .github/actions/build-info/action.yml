@@ -6,7 +6,7 @@ runs:
     - name: Print Branch
       shell: bash
       run: |
-       eecho "BRANCH: $GITHUB_REF_NAME"
+       echo "BRANCH: $GITHUB_REF_NAME"
     - name: Print Commit
       shell: bash
       run: |
