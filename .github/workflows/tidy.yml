@@ -13,4 +13,4 @@ jobs:
       - name: Count Repo Files
         run: |
           echo "Total Repo Files:"
-          find .type f -not -path './.git/*'|wc -l
+          find . -type f -not -path './.git/*'|wc -l
