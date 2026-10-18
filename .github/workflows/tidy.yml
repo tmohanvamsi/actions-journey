@@ -1,0 +1,16 @@
+name: tidy
+on: push
+concurrency:
+  group: tidy-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  code-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v4
+      - name: Count Repo Files
+        run: |
+          echo "Total Repo Files:"
+          find .type f -not -path './.git/*'|wc -l
