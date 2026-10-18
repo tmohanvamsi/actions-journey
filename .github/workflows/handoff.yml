@@ -1,0 +1,26 @@
+name: handoff
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create application file
+        run: |
+          echo "Hello from build job" > app.txt
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-package
+          path: app.txt
+  verify:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app-package
+      - name: Verify Application File
+        run: |
+          test -f app.txt
+          cat app.txt
