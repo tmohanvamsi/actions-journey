@@ -1,0 +1,13 @@
+name: checks
+on:
+  workflow_call:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Run checks
+        run: |
+          echo "Running resuable workflow checks"
+          echo "Repository: $GITHUB_REPOSITORY"

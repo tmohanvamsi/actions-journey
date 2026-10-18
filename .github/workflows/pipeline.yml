@@ -1,29 +1,5 @@
-name: pipeline
+name: Resuable Pipeline
 on: push
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.ver.outputs.version }}
-    steps:
-      - name: Generate Version
-        id: ver
-        run: |
-          echo "version=1.4.2" >> "$GITHUB_OUTPUT"
-
-  test:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Run Tests
-        run: |
-          echo "Running Application Tests"
-          echo "Tests passed"
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: [build, test]
-    steps:
-      - name: Deploy Version
-        run: |
-          echo "Deploying version ${{ needs.build.outputs.version }}"
+  checks:
+    uses: ./.github/workflows/checks.yml
