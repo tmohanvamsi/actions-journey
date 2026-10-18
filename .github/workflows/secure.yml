@@ -1,0 +1,14 @@
+name: secure
+on: push
+permissions:
+  contents: read
+jobs:
+  secure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+      - name: List Repo Files
+        run: |
+          ls -la
+          find . -type f -not -path './.git/*' | sort
