@@ -10,6 +10,6 @@ runs:
     - name: Print App Name
       shell: bash
       env:
-        APP_NAME: ${{ input.app-name }}
+        APP_NAME: ${{ inputs.app-name }}
       run: |
         echo "building Application: $APP_NAME"
