@@ -1,19 +1,9 @@
-name: Parallel CI pipeline
+name: Release Notif Pipeline
 on: push
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run Lint
-        run: echo "Building the application"
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run Unit Tests
-        run: echo "Unti Tests Passed"
-  package:
-    runs-on: ubuntu-latest
-    needs: [lint, unit-tests]
-    steps:
-      - name: Package Application
-        run: echo "Packaging Application"
+  notify:
+    uses: ./.github/workflows/notify.yml
+    with:
+      environment: staging
+    secrets:
+      NOTIFY_TOKEN: ${{ secrets.NOTIFY_TOKEN }}

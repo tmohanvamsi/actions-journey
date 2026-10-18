@@ -1,0 +1,26 @@
+name: notify
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+    secrets:
+      NOTIFY_TOKEN:
+        required: true
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Notification
+        env:
+          DEPLOY_ENV: ${{ inputs.environment }}
+          TOKEN: ${{ secrets.NOTIFY_TOKEN }}
+        run: |
+          echo "Notification for environment: $DEPLOY_ENV"
+          if [ -n "$TOKEN" ]; then
+            echo "Notification Token Received"
+          else
+            echo "Notification Token Missing"
+            exit 1
+          fi
