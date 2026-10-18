@@ -1,0 +1,18 @@
+name: report
+on: push
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Report
+        run: |
+          echo "Build Report" > report.txt
+          echo "Date: $(date -u)" >> report.txt
+          echo "Commit: $GITHUB_SHA" >> report.txt
+
+      - name: Uploads Build Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-report
+          path: report.txt
+          retention-days: 5
