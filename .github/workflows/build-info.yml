@@ -1,0 +1,10 @@
+name: Build Info Workflow
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Run Build-Info Action
+        uses: ./.github/actions/build-info
