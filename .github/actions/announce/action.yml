@@ -1,0 +1,15 @@
+name: Announce
+description: Annount the application being built
+inputs:
+  app-name:
+    description: Define App Name
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Print App Name
+      shell: bash
+      env:
+        APP_NAME: ${{ input.app-name }}
+      run: |
+        echo "building Application: $APP_NAME"
